@@ -1,8 +1,9 @@
 <?php
 session_start();
-if(isset($_SESSION['auth'])&& $_SESSION['auth'] === true){
-    header('Location: /profile.php');
+if(isset($_SESSION['auth'])&& $_SESSION['auth'] !== true){
+    header('Location: /index.php');
 }
+
 ?>
 
 <!doctype html>
@@ -17,22 +18,10 @@ if(isset($_SESSION['auth'])&& $_SESSION['auth'] === true){
     <title>Document</title>
 </head>
 <body>
-<form action="vendor/login.php" method="post">
-    <div class="btn-group">
-        <a href="register.php" class="btn btn-primary">Регистрация</a>
-    </div>
-    <br>
-    <br>
-            <label for="email">E-mail:</label>
-            <input type="text" id="email" name="email">
-    <br>
-    <br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
-    <br>
-    <br>
-    <button type="submit" class="btn btn-primary">Авторизация</button>
-</form>
+<a>HI! <?php echo $_SESSION['user']['name']?></a>
+<br>
+<div class="btn-group">
+    <a href="vendor/logout.php" class="btn btn-primary">Exit</a>
+</div>
 </body>
 </html>
-
